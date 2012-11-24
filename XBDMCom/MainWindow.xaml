@@ -1,0 +1,67 @@
+﻿<Window x:Class="XBDMCom.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525"
+        xmlns:Vectors="clr-namespace:XBDMCom.Metro.Controls.Vectors"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        WindowStartupLocation="CenterScreen" AllowsTransparency="True" ResizeMode="CanResize" WindowStyle="None"
+        Background="{DynamicResource MainBackgroundBrush}" SnapsToDevicePixels="True" 
+        StateChanged="Window_StateChanged">
+    
+    <Border x:Name="borderFrame" BorderBrush="{DynamicResource ExtryzeAccentBrush}" BorderThickness="1,1,1,23">
+        <Grid>
+            <Grid x:Name="containerFrame">
+                <Grid x:Name="homeHeader" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="60">
+                    <Image VerticalAlignment="Top" HorizontalAlignment="Left" Width="35" Margin="5,5,0,0" Source="{DynamicResource ExtryzeAccentLogo}" Opacity="0.98" />
+                    <TextBlock x:Name="lblTitle" Text="Developer Xbox 360 Communicator - RSParlyXBDM" Foreground="{DynamicResource TextBrushSecondary}" VerticalAlignment="Top" HorizontalAlignment="Stretch" FontSize="15" Margin="45,12,141,0" FontFamily="{DynamicResource MetroFontLight}" TextTrimming="CharacterEllipsis"/>
+
+                    <Thumb 
+						x:Name="headerThumb" 
+						Opacity="0" 
+						Background="{x:Null}" 
+						Foreground="{x:Null}" Margin="0,0,0,0" Height="40" VerticalAlignment="Top"
+                        DragDelta="headerThumb_DragDelta"
+                        MouseDoubleClick="headerThumb_MouseDoubleClick"
+						/>
+
+                    <StackPanel x:Name="homeHeaderActionButtons" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right" Height="26" Margin="0,0,0,0">
+                        <Button x:Name="btnActionMinimize" ToolTip="Minimize" Width="34" Height="26" Margin="0" Style="{StaticResource WindowActionButton}" VerticalAlignment="Top" Click="btnActionMinimize_Click">
+                            <Vectors:MinimizeModule Width="34" Height="26"/>
+                        </Button>
+
+                        <Button x:Name="btnActionRestore" ToolTip="Restore" Width="34" Height="26" Margin="0" Style="{StaticResource WindowActionButton}" Click="btnActionRestore_Click">
+                            <Vectors:RestoreModule Width="34" Height="26"/>
+                        </Button>
+                        <Button x:Name="btnActionMaxamize" ToolTip="Maxamize" Width="34" Height="26" Margin="0" Style="{StaticResource WindowActionButton}" Click="btnActionMaxamize_Click">
+                            <Vectors:MaxamizeModule Width="34" Height="26"/>
+                        </Button>
+
+                        <Button x:Name="btnActionClose" ToolTip="Close" Width="34" Height="26" Margin="0" Style="{StaticResource WindowActionButton}" Click="btnActionClose_Click">
+                            <Vectors:CloseModule Width="34" Height="26"/>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+                <Grid x:Name="homeContent" Margin="0, 62, 0, 0">
+                    
+                </Grid>
+            </Grid>
+
+            <TextBlock x:Name="Status"  Margin="5,0,0,-19" VerticalAlignment="Bottom" HorizontalAlignment="Left" Text="Ready..." Foreground="{DynamicResource TextBrushPrimary}" FontFamily="{DynamicResource MetroFontRegular}" />
+
+            <Grid Margin="-1, -1, -1, -23" x:Name="homeResizing">
+                <!--Resize-->
+                <!--Corner-->
+                <Vectors:ResizeModule x:Name="ResizeDropVector" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,5,5" Cursor="SizeNWSE"/>
+                <Thumb x:Name="ResizeDrop" DragDelta="ResizeDrop_DragDelta" Opacity="0" Background="{x:Null}" Foreground="{x:Null}" Width="11" Height="11" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,1,1" Cursor="SizeNWSE" />
+
+                <!--Side-->
+                <Thumb x:Name="ResizeRight" DragDelta="ResizeRight_DragDelta" Opacity="0" Background="{x:Null}" Foreground="{x:Null}" Width="8" Margin="0,27.333,0,11" HorizontalAlignment="Right" VerticalAlignment="Stretch" Cursor="SizeWE" />
+
+                <!--Bottom-->
+                <Thumb x:Name="ResizeBottom" DragDelta="ResizeBottom_DragDelta" Opacity="0" Background="{x:Null}" Foreground="{x:Null}" Height="8" Margin="0,0,11,0" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Cursor="SizeNS" />
+            </Grid>
+
+            <Rectangle x:Name="OpacityMask"  Opacity="0.65" Fill="{DynamicResource HomeOpacityBrush}" Visibility="Collapsed" />
+        </Grid>
+    </Border>
+</Window>
